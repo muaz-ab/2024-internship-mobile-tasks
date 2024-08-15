@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'page1.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(Add_Update_Page());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Add_Update_Page extends StatelessWidget {
+  const Add_Update_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Home_page()),
+            );
+          },
           icon: Icon(
             Icons.arrow_back_ios,
             color: const Color.fromRGBO(63, 81, 243, 1),
@@ -92,6 +99,25 @@ class MyHomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6.0),
                   color: Color.fromRGBO(243, 243, 243, 1),
                 ),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            textAlign: TextAlign.left,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
             Padding(
@@ -113,6 +139,25 @@ class MyHomePage extends StatelessWidget {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(6.0),
                   color: Color.fromRGBO(243, 243, 243, 1),
+                ),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            textAlign: TextAlign.left,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -139,8 +184,21 @@ class MyHomePage extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: Text("\$"),
+                    padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            textAlign: TextAlign.left,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Text("\$"),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -164,6 +222,16 @@ class MyHomePage extends StatelessWidget {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(6.0),
                   color: Color.fromRGBO(243, 243, 243, 1),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: TextField(
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                    ),
+                  ),
                 ),
               ),
             ),

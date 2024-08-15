@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/page1.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Search_Page());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Search_Page extends StatelessWidget {
+  const Search_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,12 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home_page()),
+            );
+          },
           icon: Icon(
             Icons.arrow_back_ios,
             color: const Color.fromRGBO(63, 81, 243, 1),

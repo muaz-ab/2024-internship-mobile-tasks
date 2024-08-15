@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/page1.dart';
+import 'package:namer_app/page3.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Details_Page());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Details_Page extends StatelessWidget {
+  const Details_Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Eccomerce App",
-      home: MyHomePage(),
+      title: "Ecommerce App",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/home': (context) => Home_page(),
+        '/addUpdate': (context) => Add_Update_Page(),
+      },
     );
   }
 }
@@ -42,7 +49,9 @@ class MyHomePage extends StatelessWidget {
                   Icons.arrow_back_ios_new,
                   color: const Color.fromRGBO(63, 81, 243, 1),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                },
               ),
             ),
           ),
@@ -148,133 +157,13 @@ class MyHomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('39', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('40', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: const Color.fromRGBO(63, 81, 243, 1),
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child: Text('41',
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.white)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('42', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('43', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('44', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: Card(
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            color: Colors.white,
-                            child: SizedBox(
-                              width: 60.0,
-                              height: 60.0,
-                              child: Center(
-                                child:
-                                    Text('45', style: TextStyle(fontSize: 16)),
-                              ),
-                            ),
-                          ),
-                        ),
+                        _buildSizeCard('39'),
+                        _buildSizeCard('40'),
+                        _buildSizeCard('41', selected: true),
+                        _buildSizeCard('42'),
+                        _buildSizeCard('43'),
+                        _buildSizeCard('44'),
+                        _buildSizeCard('45'),
                       ],
                     ),
                   ),
@@ -312,20 +201,26 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Container(
-                      height: 50,
-                      width: 152,
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(63, 81, 243, 1),
-                        borderRadius: BorderRadius.circular(10.0),
+                    GestureDetector(
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        '/addUpdate',
                       ),
-                      child: Center(
-                        child: Text(
-                          "UPDATE",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
+                      child: Container(
+                        height: 50,
+                        width: 152,
+                        decoration: BoxDecoration(
+                          color: const Color.fromRGBO(63, 81, 243, 1),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "UPDATE",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -334,6 +229,32 @@ class MyHomePage extends StatelessWidget {
                 ),
               )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSizeCard(String size, {bool selected = false}) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 2.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        color: selected ? const Color.fromRGBO(63, 81, 243, 1) : Colors.white,
+        child: SizedBox(
+          width: 60.0,
+          height: 60.0,
+          child: Center(
+            child: Text(
+              size,
+              style: TextStyle(
+                fontSize: 16,
+                color: selected ? Colors.white : Colors.black,
+              ),
+            ),
           ),
         ),
       ),

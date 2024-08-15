@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:namer_app/page2.dart';
+import 'package:namer_app/page4.dart';
+
+import 'page3.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Home_page());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Home_page extends StatelessWidget {
+  const Home_page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Eccomerce App",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
+      title: "Ecommerce App",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/home': (context) => Home_page(),
+        '/addUpdate': (context) => Add_Update_Page(),
+        '/search': (context) => Search_Page(),
+      },
     );
   }
 }
@@ -97,22 +104,27 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Container(
-                      width: 40.0,
-                      height: 40.0,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                          color: Color.fromARGB(255, 174, 170, 170),
-                          width: 2.0,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/search');
+                      },
+                      child: Container(
+                        width: 40.0,
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                          border: Border.all(
+                            color: Color.fromARGB(255, 174, 170, 170),
+                            width: 2.0,
+                          ),
                         ),
-                      ),
-                      margin: EdgeInsets.only(right: 16.0),
-                      child: Center(
-                        child: Icon(
-                          Icons.search,
-                          color: Color.fromARGB(255, 174, 170, 170),
+                        margin: EdgeInsets.only(right: 16.0),
+                        child: Center(
+                          child: Icon(
+                            Icons.search,
+                            color: Color.fromARGB(255, 174, 170, 170),
+                          ),
                         ),
                       ),
                     )
@@ -120,246 +132,270 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 16.0),
-              Card(
-                elevation: 2.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10.0),
-                      ),
-                      child: Image.network(
-                        'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
-                        fit: BoxFit.cover,
-                        width: 366.0,
-                        height: 160.0,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(16.0),
-                      height: 80.0,
-                      width: 366.0,
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Derby Leather Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Text(
-                                  "\$120",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Men's Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 12.0,
-                                    ),
-                                    SizedBox(width: 4.0),
-                                    Text(
-                                      "(4.0)",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Details_Page()),
+                  );
+                },
+                child: Card(
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(10.0),
+                        ),
+                        child: Image.network(
+                          'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
+                          fit: BoxFit.cover,
+                          width: 366.0,
+                          height: 160.0,
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        height: 80.0,
+                        width: 366.0,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Derby Leather Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 20.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "\$120",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Men's Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                        size: 12.0,
+                                      ),
+                                      SizedBox(width: 4.0),
+                                      Text(
+                                        "(4.0)",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 16.0),
-              Card(
-                elevation: 2.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10.0),
-                      ),
-                      child: Image.network(
-                        'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
-                        fit: BoxFit.cover,
-                        width: 366.0,
-                        height: 160.0,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(16.0),
-                      height: 80.0,
-                      width: 366.0,
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Derby Leather Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Text(
-                                  "\$120",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Men's Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 12.0,
-                                    ),
-                                    SizedBox(width: 4.0),
-                                    Text(
-                                      "(4.0)",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Details_Page()),
+                  );
+                },
+                child: Card(
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(10.0),
+                        ),
+                        child: Image.network(
+                          'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
+                          fit: BoxFit.cover,
+                          width: 366.0,
+                          height: 160.0,
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        height: 80.0,
+                        width: 366.0,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Derby Leather Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "\$120",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Men's Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                        size: 12.0,
+                                      ),
+                                      SizedBox(width: 4.0),
+                                      Text(
+                                        "(4.0)",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 16.0),
-              Card(
-                elevation: 2.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10.0),
-                      ),
-                      child: Image.network(
-                        'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
-                        fit: BoxFit.cover,
-                        width: 366.0,
-                        height: 160.0,
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(16.0),
-                      height: 80.0,
-                      width: 366.0,
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Derby Leather Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Text(
-                                  "\$120",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Men's Shoes",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                                Spacer(),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 12.0,
-                                    ),
-                                    SizedBox(width: 4.0),
-                                    Text(
-                                      "(4.0)",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
-                          ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Details_Page()),
+                  );
+                },
+                child: Card(
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(10.0),
+                        ),
+                        child: Image.network(
+                          'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
+                          fit: BoxFit.cover,
+                          width: 366.0,
+                          height: 160.0,
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        height: 80.0,
+                        width: 366.0,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Derby Leather Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    "\$120",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Men's Shoes",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w300,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Colors.amber,
+                                        size: 12.0,
+                                      ),
+                                      SizedBox(width: 4.0),
+                                      Text(
+                                        "(4.0)",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -367,7 +403,12 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Add_Update_Page()),
+          );
+        },
         backgroundColor: const Color.fromRGBO(63, 81, 243, 1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
