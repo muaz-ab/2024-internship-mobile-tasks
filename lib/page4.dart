@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:namer_app/page1.dart';
 
 void main() {
-  runApp(Search_Page());
+  runApp(SearchPage());
 }
 
-class Search_Page extends StatelessWidget {
-  const Search_Page({super.key});
+class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Ecommerce App",
-      home: MyHomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(),
+        '/home': (context) => const HomePage(),
+      },
       theme: ThemeData(
         primaryColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
@@ -31,10 +35,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Home_page()),
-            );
+            Navigator.pushNamed(context, '/home');
           },
           icon: Icon(
             Icons.arrow_back_ios,
@@ -182,13 +183,23 @@ class MyHomePage extends StatelessWidget {
                                           ),
                                         ),
                                         Spacer(),
-                                        Text(
-                                          "(4.0)",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w300,
-                                            fontSize: 12.0,
-                                          ),
-                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 12.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              "(4.0)",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        )
                                       ],
                                     )
                                   ],
@@ -252,13 +263,103 @@ class MyHomePage extends StatelessWidget {
                                           ),
                                         ),
                                         Spacer(),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 12.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              "(4.0)",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      Card(
+                        elevation: 2.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10.0),
+                              ),
+                              child: Image.network(
+                                'https://s3-alpha-sig.figma.com/img/810f/e39e/1af164dc20b628e79e23852d3bdcca01?Expires=1724630400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YrdTLQdgPbJd0qWa3u2fJ8s2ZLe-34Fa3pr4AnVVWLI5AzEEh9nbSht8YABty7KCgKZLZaSCsEtIqZQvlc4-A5bDrMQ0zqgUhLZL9BfogbUoq4f5Yb-hkb6nODamzeSwjM5SvP7b-kVsCmYiPrVwcpySp3res2tSMenzXBDlBeDdCgHeMYNc2H630dYMXsUyCcuTlp9netlk6F6oPpQlIvhSyA1PM6-8twe-kLaYGeAWdgbL7VwQqRhyJvACY9iWYr9MKd4JVGFbWToaI4cwB0Rw0slqxaoRYeViXvkDiCe7Hdr9ldvDwh-kR~Qzhcu~iiYHwmrDKAvUSBQMwEEQgQ__',
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                height: 160.0,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(16.0),
+                              height: 80.0,
+                              child: Center(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
                                         Text(
-                                          "(4.0)",
+                                          "Derby Leather Shoes",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20.0,
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        Text(
+                                          "120",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Men's Shoes",
                                           style: TextStyle(
                                             fontWeight: FontWeight.w300,
                                             fontSize: 12.0,
                                           ),
                                         ),
+                                        Spacer(),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                              size: 12.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              "(4.0)",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 12.0,
+                                              ),
+                                            ),
+                                          ],
+                                        )
                                       ],
                                     )
                                   ],

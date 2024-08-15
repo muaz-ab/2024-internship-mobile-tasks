@@ -17,8 +17,8 @@ class Details_Page extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(),
-        '/home': (context) => Home_page(),
-        '/addUpdate': (context) => Add_Update_Page(),
+        '/home': (context) => HomePage(),
+        '/addUpdate': (context) => AddUpdatePage(),
       },
     );
   }

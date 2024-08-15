@@ -5,11 +5,11 @@ import 'package:namer_app/page4.dart';
 import 'page3.dart';
 
 void main() {
-  runApp(Home_page());
+  runApp(HomePage());
 }
 
-class Home_page extends StatelessWidget {
-  const Home_page({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class Home_page extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => MyHomePage(),
-        '/home': (context) => Home_page(),
-        '/addUpdate': (context) => Add_Update_Page(),
-        '/search': (context) => Search_Page(),
+        '/home': (context) => HomePage(),
+        '/addUpdate': (context) => AddUpdatePage(),
+        '/search': (context) => SearchPage(),
       },
     );
   }
@@ -406,7 +406,7 @@ class MyHomePage extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Add_Update_Page()),
+            MaterialPageRoute(builder: (context) => AddUpdatePage()),
           );
         },
         backgroundColor: const Color.fromRGBO(63, 81, 243, 1),

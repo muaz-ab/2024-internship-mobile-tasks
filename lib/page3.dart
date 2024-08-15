@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 
-import 'page1.dart';
+import 'page1.dart'; //
 
 void main() {
-  runApp(Add_Update_Page());
+  runApp(AddUpdatePage());
 }
 
-class Add_Update_Page extends StatelessWidget {
-  const Add_Update_Page({super.key});
+class AddUpdatePage extends StatelessWidget {
+  const AddUpdatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Eccomerce App",
-      home: MyHomePage(),
+      title: "Ecommerce App",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyHomePage(),
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }
@@ -28,10 +32,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => Home_page()),
-            );
+            Navigator.pushNamed(context, '/home');
           },
           icon: Icon(
             Icons.arrow_back_ios,
